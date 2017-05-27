@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>my iphone</title>
+	<style>
+		#iphone{
+			width: 300px;
+			height: 530px;
+			border: 1px solid black;
+			border-radius: 20px;
+		}
+		#screen{
+			width: 250px;
+			height: 400px;
+			border: 1px solid black;
+			margin: 50px 24px 0;
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			align-items: flex-end;
+			background: url(bizhi.jpg) no-repeat;
+			background-size: 250px 400px;
+		}
+		img{
+			width: 40px;
+			height: 40px;
+			margin: 6px 6px 0;
+			border-radius: 6px;
+		}
+		#clock{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			border: 1px black solid;
+			background: url(clock.png) no-repeat;
+			background-size: 40px 40px;
+			/*display: none;*/
+			margin: 6px 6px 0;
+		}
+		#secline{
+			width: 0px;
+			height: 18px;
+			border: 1px red solid;
+			box-sizing: border-box;
+			position: relative;
+			left: 20px;
+			top: -28px;
+			display: none;
+		}
+		#minline{
+			width: 0px;
+			height: 16px;
+			border: 1px black solid;
+			box-sizing: border-box;
+			position: relative;
+			left: 20px;
+			top: -10px;
+			display: none;
+		}
+		#hourline{
+			width: 0px;
+			height: 14px;
+			border: 1px black solid;
+			box-sizing: border-box;
+			position: relative;
+			left: 20px;
+			top: 6px;
+			display: none;
+		}
+		#bottomnavi{
+			width: 250px;
+			height: 60px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			/*background: url(glass.jpg);*/
+			/*filter: blur(15px);*/
+		}
+		#bottomall{
+			width: 250px;
+			height: 60px; 
+		}
+		#glass{
+			width: 250px;
+			height: 60px;
+			margin: 0;
+			position: relative;
+			top: -61px;
+			filter: blur(1px) opacity(70%) brightness(90%);
+			/*z-index: -1;*/
+		}
+		.bottomimg{
+			z-index: 1;
+		}
+		#home{
+			width: 40px;
+			height: 40px;
+			border: 1px black solid;
+			border-radius: 50%;
+			box-sizing: border-box;
+			position: relative;
+			left: 130px;
+			top: 15px;
+		}
+		#topline{
+			position: relative;
+			width: 300px;
+			height: 15px;
+			top: 20px;
+		}
+		#camera{
+			display: inline-block;
+			position: relative;
+			left: 110px;
+			width: 8px;
+			height: 8px;
+			border: 1px solid black;
+			border-radius: 50%;
+			margin-right: 5px;
+		}
+		#voice{
+			display: inline-block;
+			position: relative;
+			left: 110px;
+			width: 50px;
+			height: 8px;
+			border: 1px solid black;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="iphone">
+		<div id="topline">
+			<div id="camera"></div>
+			<div id="voice"></div>
+		</div>
+		<div id="screen">
+			<img src="aqy.jpg" alt="aiqiyi">
+			<img src="bd.jpg" alt="baidu">
+			<img src="bilibili.jpg" alt="bilibili">
+			<img src="dd.jpg" alt="didi">
+			<img src="elm.jpg" alt="eleme">
+			<img src="gd.jpg" alt="gaodemap">
+			<img src="jd.jpg" alt="jd">
+			<img src="mobike.jpg" alt="mobike">
+			<img src="mt.jpg" alt="meituan">
+			<img src="mtwm.jpg" alt="meituanwaimai">
+			<img src="ofo.jpg" alt="ofo">
+			<img src="qq.jpg" alt="qq">
+			<img src="qqmusic.jpg" alt="qq.music">
+			<img src="sg.jpg" alt="sg">
+			<img src="tb.jpg" alt="taobao">
+			<img src="tt.jpg" alt="toutiao">
+			<img src="wb.jpg" alt="weibo">
+			<img src="wph.jpg" alt="weipinhui">
+			<img src="wx.jpg" alt="wechat">
+			<div id="clock">
+				<div id="hourline"></div>
+				<div id="minline"></div>
+				<div id="secline"></div>
+			</div>
+			<div id="bottomall">
+				<div id="bottomnavi">
+					<img class="bottomimg" src="wymusic.jpg" alt="wangyimusic">
+					<img class="bottomimg" src="wzry.jpg" alt="wangzherongyao">
+					<img class="bottomimg" src="xy.jpg" alt="xianyu">
+					<img class="bottomimg" src="zfb.jpg" alt="zhifubo">
+				</div>
+				<img src="glass.jpg" alt="" id="glass">
+			</div>			
+		</div>
+		<div id="home"></div>
+	</div>
+		<script>
+		var hourline = document.querySelector("#hourline");
+		var minline = document.querySelector("#minline");
+		var secline = document.querySelector("#secline");
+		
+		var Working = function () {
+			var time = new Date();
+			var hours = time.getHours();
+			var minutes = time.getMinutes();
+			var seconds = time.getSeconds();
+			console.log(seconds);
+			hours = hours > 12 ? hours - 12 : hours;
+			hours = hours + minutes/60 + seconds/3600;
+			minutes = minutes + seconds/60;
+			secline.style.transform = `rotate(${seconds*6}deg)`;
+			secline.style.transformOrigin = "bottom";
+			minline.style.transform = `rotate(${minutes*6}deg)`;
+			minline.style.transformOrigin = "bottom";
+			hourline.style.transform = `rotate(${hours*30}deg)`;
+			hourline.style.transformOrigin = "bottom";
+			secline.style.display = "block";
+			minline.style.display = "block";
+			hourline.style.display = "block";
+			// clock.style.display = "block";
+		}
+		Working();
+		setInterval("Working()",1000);
+	</script>
+</body>
+</html>
